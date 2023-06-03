@@ -1,2 +1,2 @@
-# Jogo da Memoria
- Um jogo da memoria desenvolvido em Python
+# Jogo da Memória
+ Um jogo da memória desenvolvido em Python...
