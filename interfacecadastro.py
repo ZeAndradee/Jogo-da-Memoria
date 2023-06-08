@@ -1,28 +1,33 @@
 import tkinter as tk
+import customtkinter
 from tkinter import *
-#criando a primeira janela
-def abrir_janela():
-    conclusaocadastro = tk.Toplevel()
-    conclusaocadastro.title("janela nova")
-janela = tk.Tk()
-# permite a janela aparecer e o usuário manusear nela
-janela.title("Cadastramento")
-janela.geometry("250x100")
 
-label = Label(janela, text="nome")
-label.grid(row=0, column=0)
-nome = Entry(janela, width= 10 )
-nome.grid(row=0, column=1)
+customtkinter.set_appearance_mode("light")  # Modes: system (default), light, dark
+customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
-lista_dificuldade = ["fácil", "médio", "difícil"]
-dificultade = StringVar(janela)
-dificultade.set(lista_dificuldade[0])
-#criando um option menu
-label_dificuldade = Label(janela, text="dificuldade")
-label_dificuldade.grid(row=1,column=0)
-opnivel= OptionMenu(janela, dificultade ,*lista_dificuldade)
-opnivel.grid( row=1, column= 1, columnspan = 2)
+app = customtkinter.CTk()  # create CTk window like you do with the Tk window
+app.geometry("400x240")
 
-botao = tk.Button(janela, text= "enviar dados", command = abrir_janela )
-botao.grid(row = 9, column = 10)
-janela.mainloop()
+print(customtkinter.__version__)
+
+def switch_theme():
+      if switch_var.get() == "on":
+        customtkinter.set_appearance_mode("dark")
+      else:
+        customtkinter.set_appearance_mode("light")   
+
+
+label = customtkinter.CTkLabel(app, text="Bem Vindo", font=customtkinter.CTkFont(size=20, weight="bold"))
+label.place(x=150, y=30)
+
+button = customtkinter.CTkButton(app, text='Fazer Login', command='')
+button.place(x=130, y= 100)
+
+button = customtkinter.CTkButton(app, text='Cadastre-se', command='')
+button.place(x=130, y= 150)
+
+switch_var = customtkinter.StringVar(value="off")
+switch = customtkinter.CTkSwitch(app, text="Dark Mode", command=switch_theme,
+                                 variable=switch_var, onvalue="on", offvalue="off")
+switch.place(x= 260, y= 200)
+app.mainloop()
