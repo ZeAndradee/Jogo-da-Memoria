@@ -9,22 +9,20 @@ janela = tk.Tk()
 janela.title("Cadastramento")
 janela.geometry("250x100")
 
-label = Label(janela, text="Cadastro", )
-label.grid(row=0, column=0)
-
 label = Label(janela, text="nome")
-label.grid(row=1, column=0)
+label.grid(row=0, column=0)
 nome = Entry(janela, width= 10 )
-nome.grid(row=1, column=1)
+nome.grid(row=0, column=1)
 
 lista_dificuldade = ["fácil", "médio", "difícil"]
 dificultade = StringVar(janela)
 dificultade.set(lista_dificuldade[0])
 #criando um option menu
 label_dificuldade = Label(janela, text="dificuldade")
-label_dificuldade.grid(row=2,column=0)
+label_dificuldade.grid(row=1,column=0)
 opnivel= OptionMenu(janela, dificultade ,*lista_dificuldade)
-opnivel.grid( row=2, column= 1, columnspan = 2)
+opnivel.grid( row=1, column= 1, columnspan = 2)
 
 botao = tk.Button(janela, text= "enviar dados", command = abrir_janela )
-botao.grid(row = 10, column = 10)
+botao.grid(row = 9, column = 10)
+janela.mainloop()
