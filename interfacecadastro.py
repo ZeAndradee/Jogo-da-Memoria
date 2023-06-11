@@ -7,8 +7,15 @@ customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-bl
 
 app = customtkinter.CTk()  # create CTk window like you do with the Tk window
 app.geometry("400x240")
+app.title('Cadastro')
 
-print(customtkinter.__version__)
+
+
+def abrir_login():
+  login = customtkinter.CTkToplevel()
+  login.title('login')
+  login.geometry('400x240')
+  app.close()
 
 def switch_theme():
       if switch_var.get() == "on":
@@ -20,7 +27,7 @@ def switch_theme():
 label = customtkinter.CTkLabel(app, text="Bem Vindo", font=customtkinter.CTkFont(size=20, weight="bold"))
 label.place(x=150, y=30)
 
-button = customtkinter.CTkButton(app, text='Fazer Login', command='')
+button = customtkinter.CTkButton(app, text='Fazer Login', command=abrir_login)
 button.place(x=130, y= 100)
 
 button = customtkinter.CTkButton(app, text='Cadastre-se', command='')
