@@ -39,68 +39,40 @@ def abrir_tela_login():
     login_window.title("Tela de login")
     login_window.geometry("400x240")
 
-    
-
     # Criando uma label com o custom tkinter
-    label = customtkinter.CTkLabel(login_window, text="Tela login", font=customtkinter.CTkFont(size=20, weight="bold"))
-    label.place(x=150, y=30)
-    #label nome
-    label = customtkinter.CTkLabel(login_window, text="Apelido", font=customtkinter.CTkFont(size=12, weight="normal"))
-    label.place(x=80, y=75)
-    #Criando TextBox
-    textbox = customtkinter.CTkTextbox(login_window, width=250, height=30)
-    textbox.place(x= 75, y=100)
-    textbox.insert("0.0", "new text to insert") # insere na linha 0 caractere 0
-    text = textbox.get("0.0", "end") # obtém o texto da linha 0 caractere 0 até o final
-    textbox.delete("0.0", "end") # deleta todo o texto
-    textbox.configure(state="normal") # configura a caixa de texto para ser somente leitura
+    label = customtkinter.CTkLabel(login_window, text="Escolha um usuário", font=customtkinter.CTkFont(size=20, weight="bold"))
+    label.place(x=110, y=30)
+    #label apelido
+    label = customtkinter.CTkLabel(login_window, text="Jogadores:", font=customtkinter.CTkFont(size=14, weight="normal"))
+    label.place(x=120, y=90)
 
-    labelsenha = customtkinter.CTkLabel(login_window, text="Senha", font=customtkinter.CTkFont(size=12, weight="normal"))
-    labelsenha.place(x=80, y=145)
-
-    #Criando TextBox
-    textbox2 = customtkinter.CTkTextbox(login_window, width=250, height=30)
-    textbox2.place(x= 75, y=170)
-    textbox2.insert("0.0", "new text to insert") # insere na linha 0 caractere 0
-    text2 = textbox2.get("0.0", "end") # obtém o texto da linha 0 caractere 0 até o final
-    textbox2.delete("0.0", "end") # deleta todo o texto
-    textbox2.configure(state="normal") # configura a caixa de texto para ser somente leitura
+    optionmenu_var = customtkinter.StringVar(value="- Escolha uma opção -") # set initial value
+    optionmenu = customtkinter.CTkOptionMenu(login_window,
+    values=["Vinicius", 'Hiarita', 'Lucas', 'Victor', 'Caio'],
+    command='',
+    variable=optionmenu_var)
+    optionmenu.place(x= 120, y=120)
     
 def abrir_cadastro():
     #criando tela de cadastro
     cadastro_window = customtkinter.CTkToplevel()
     cadastro_window.title('Tela de Cadastro')
     cadastro_window.geometry("400x240")
+
     #criando label com nome 
-    label3 = customtkinter.CTkLabel(cadastro_window, text= "Tela de Cadastro", font= customtkinter.CTkFont(size= 20, weight= "bold"))
+    label3 = customtkinter.CTkLabel(cadastro_window, text= "Crie um usuário", font= customtkinter.CTkFont(size= 20, weight= "bold"))
     label3.place(x=120 ,y=30 )
+
     #label apelido
     label = customtkinter.CTkLabel(cadastro_window, text="Apelido", font=customtkinter.CTkFont(size=12, weight="normal"))
-    label.place(x=80, y=75)
+    label.place(x=80, y=95)
+
     #criando textbox apelido
     textbox3 = customtkinter.CTkTextbox(cadastro_window, width=250, height=30)
-    textbox3.place(x= 75, y=100)
+    textbox3.place(x= 75, y=120)
     textbox3.insert("0.0", "new text to insert") # insere na linha 0 caractere 0
     text3 = textbox3.get("0.0", "end") # obtém o texto da linha 0 caractere 0 até o final
     textbox3.delete("0.0", "end") # deleta todo o texto
     textbox3.configure(state="normal") # configura a caixa de texto para ser somente leitura
-    #criando senha
-    labelsenha = customtkinter.CTkLabel(cadastro_window, text="Senha", font=customtkinter.CTkFont(size=12, weight="normal"))
-    labelsenha.place(x=80, y=145)
-    #criando textbox senha
-    textbox2 = customtkinter.CTkTextbox(cadastro_window, width=250, height=30)
-    textbox2.place(x= 75, y=170)
-    textbox2.insert("0.0", "new text to insert") # insere na linha 0 caractere 0
-    text2 = textbox2.get("0.0", "end") # obtém o texto da linha 0 caractere 0 até o final
-    textbox2.delete("0.0", "end") # deleta todo o texto
-    textbox2.configure(state="normal") # configura a caixa de texto para ser somente leitura
-
-
-    
-
-#nome = tk.Label(login, 'digite seu nome')
-#label2 = customtkinter.CTkLabel(login,text='Login', font=customtkinter.CTkFont(size= 20, weight='bold'))
-#label2.place(x=150, y=30)
-#label2 = tk.Label(login,text='nome')
 
 app.mainloop()
