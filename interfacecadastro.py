@@ -7,7 +7,7 @@ customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-bl
 
 app = customtkinter.CTk()  # create CTk window like you do with the Tk window
 app.geometry("400x240")
-app.title('Cadastro')
+app.title('Cadastramento')
 
 
 def switch_theme():
@@ -23,13 +23,15 @@ label.place(x=150, y=30)
 button = customtkinter.CTkButton(app, text='Fazer Login', command=lambda:abrir_tela_login())
 button.place(x=130, y= 100)
 
-button = customtkinter.CTkButton(app, text='Cadastre-se', command='')
+button = customtkinter.CTkButton(app, text='Cadastre-se', command=lambda:abrir_cadastro())
 button.place(x=130, y= 150)
 
 switch_var = customtkinter.StringVar(value="off")
 switch = customtkinter.CTkSwitch(app, text="Dark Mode", command=switch_theme,
                                  variable=switch_var, onvalue="on", offvalue="off")
 switch.place(x= 260, y= 200)
+
+
 
 def abrir_tela_login():
     # Criando uma nova janela com o Toplevel
@@ -64,7 +66,12 @@ def abrir_tela_login():
     textbox2.delete("0.0", "end") # deleta todo o texto
     textbox2.configure(state="normal") # configura a caixa de texto para ser somente leitura
     
-
+def abrir_cadastro():
+    cadastro_window = customtkinter.CTkToplevel()
+    cadastro_window.title('Tela de Cadastro')
+    cadastro_window.geometry("400x240")
+    label3 = customtkinter.CTkLabel(cadastro_window, text= "Tela de Cadastro", font= customtkinter.CTkFont(size= 20, weight= "bold"))
+    label3.place(x=135 ,y=30 )
 
 #nome = tk.Label(login, 'digite seu nome')
 #label2 = customtkinter.CTkLabel(login,text='Login', font=customtkinter.CTkFont(size= 20, weight='bold'))
