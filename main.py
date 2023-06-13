@@ -1,62 +1,48 @@
 import pygame
-from pygame import *
 from pygame.locals import *
-from sys import exit
+from pygame import *
 
 pygame.init()
 
-largura = 500
-altura = 500
-screen = pygame.display.set_mode((largura, altura))
-clock = pygame.time.Clock()
-pygame.display.set_caption('Jogo da memória')
+largura_janela = 800
+altura_janela = 600
+janela = pygame.display.set_mode((largura_janela, altura_janela))
+cor_fundo = (0, 0, 170)
+cor_botao = (255, 0, 150)
 
-class Sapo(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.sprites = []
-        self.sprites.append(pygame.image.load('attack_1.png'))
-        self.sprites.append(pygame.image.load('attack_2.png'))
-        self.sprites.append(pygame.image.load('attack_3.png'))
-        self.sprites.append(pygame.image.load('attack_4.png'))
-        self.sprites.append(pygame.image.load('attack_5.png'))
-        self.sprites.append(pygame.image.load('attack_6.png'))
-        self.sprites.append(pygame.image.load('attack_7.png'))
-        self.sprites.append(pygame.image.load('attack_8.png'))
-        self.sprites.append(pygame.image.load('attack_9.png'))
-        self.sprites.append(pygame.image.load('attack_10.png'))
-        self.atual = 0
-        self.image = self.sprites[self.atual]
-        self.image = pygame.transform.scale(self.image, (128*3, 64*3))
-        
-        self.rect = self.image.get_rect()
-        self.rect.topleft = 100, 100
-    
-    def update(self):
-        self.atual = self.atual + 0.05
-        if self.atual >= len(self.sprites):
-            self.atual = 0
-        self.atual = self.sprites[int(self.atual)]
-        
+largura_botao = 200
+altura_botao = 100
+posicao_botao = ((largura_janela - largura_botao) // 2, (altura_janela - altura_botao) // 2)
 
-todas_as_sprites = pygame.sprite.Group()
-sapo = Sapo()
-todas_as_sprites.add(sapo)
+fonte = pygame.font.SysFont('arial', 36)
+texto = fonte.render("Jogar", True, (255, 255, 255))
+largura_texto = texto.get_width()
+altura_texto = texto.get_height()
+posicao_texto = ((largura_botao - largura_texto) // 2, (altura_botao - altura_texto) // 2)
 
-while True:
-    clock.tick(30)
-    screen.fill((0,70,200))
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            exit()             
-    
-        todas_as_sprites.draw(screen)
-        todas_as_sprites.update()
-    pygame.draw.rect(screen, (255,0,0), (150,200,200,60))
-    pygame.font.init()
-    fonte = pygame.font.SysFont('arial', 40, True, True)
-    texto = fonte.render('Jogar', True, (255,255,255))
-    screen.blit(texto ,(195,205))
-    pygame.draw
+def iniciar_jogo():
+    nova_janela.fill('purple')
+    janela.blit(nova_janela, (0,0))
+
+def desenhar_botao():
+    pygame.draw.rect(janela, cor_botao, (posicao_botao, (largura_botao, altura_botao)))
+    janela.blit(texto, (posicao_botao[0] + posicao_texto[0], posicao_botao[1] + posicao_texto[1]))
+
+rodando = True
+while rodando:
+    for evento in pygame.event.get():
+        if evento.type == QUIT:
+            rodando = False
+        elif evento.type == MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if posicao_botao[0] <= mouse_pos[0] <= posicao_botao[0] + largura_botao and \
+               posicao_botao[1] <= mouse_pos[1] <= posicao_botao[1] + altura_botao:
+                iniciar_jogo()
+    nvjanela_largura = 500
+    nvjanela_altura = 500
+    nova_janela = pygame.display.set_mode((nvjanela_largura, nvjanela_altura))
+    janela.fill(cor_fundo)
+    desenhar_botao()
     pygame.display.update()
+
+pygame.quit()
