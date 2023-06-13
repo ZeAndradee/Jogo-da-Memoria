@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from pygame import *
+
 
 pygame.init()
 
@@ -14,15 +14,20 @@ largura_botao = 200
 altura_botao = 100
 posicao_botao = ((largura_janela - largura_botao) // 2, (altura_janela - altura_botao) // 2)
 
-fonte = pygame.font.SysFont('arial', 36)
+fonte = pygame.font.Font(None, 36)
 texto = fonte.render("Jogar", True, (255, 255, 255))
 largura_texto = texto.get_width()
 altura_texto = texto.get_height()
 posicao_texto = ((largura_botao - largura_texto) // 2, (altura_botao - altura_texto) // 2)
 
+clock = pygame.time.Clock()
+
+
 def iniciar_jogo():
+    nova_altura = 800
+    nova_largura = 600
+    nova_janela = pygame.display.set_mode((nova_largura, nova_altura))
     nova_janela.fill('purple')
-    janela.blit(nova_janela, (0,0))
 
 def desenhar_botao():
     pygame.draw.rect(janela, cor_botao, (posicao_botao, (largura_botao, altura_botao)))
@@ -38,11 +43,9 @@ while rodando:
             if posicao_botao[0] <= mouse_pos[0] <= posicao_botao[0] + largura_botao and \
                posicao_botao[1] <= mouse_pos[1] <= posicao_botao[1] + altura_botao:
                 iniciar_jogo()
-    nvjanela_largura = 500
-    nvjanela_altura = 500
-    nova_janela = pygame.display.set_mode((nvjanela_largura, nvjanela_altura))
+    
     janela.fill(cor_fundo)
     desenhar_botao()
-    pygame.display.update()
-
+    pygame.display.flip()
+    clock.tick(30)
 pygame.quit()
