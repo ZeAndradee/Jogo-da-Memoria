@@ -122,7 +122,7 @@ def jogodificil():
         pygame.display.update()
         teladificil.fill(cor_fundo)
 
-
+        
 def perdedor():
   telaperdedor = pygame.display.set_mode((500, 500))
   pygame.display.set_caption('Resultado')
@@ -134,12 +134,12 @@ def perdedor():
           if event.type == QUIT:
               pygame.quit()
               sys.exit()
-          pygame.draw.rect(telaperdedor, (255, 0, 0), (130, 225, 280, 80))
-          texto = fonte.render("Você Perdeu!", True, (250, 255, 255))
-          telaperdedor.blit(texto, (165, 250))
-          cont += 1
-          time.sleep(1)
-          pygame.display.update()
+      pygame.draw.rect(telaperdedor, (255, 0, 0), (130, 225, 280, 80))
+      texto = fonte.render("Você Perdeu!", True, (250, 255, 255))
+      telaperdedor.blit(texto, (165, 250))
+      cont += 1
+      time.sleep(1)
+      pygame.display.update()
       telaperdedor.fill(cor_fundo)
 
 def ganhador():
@@ -153,10 +153,10 @@ def ganhador():
           if event.type == QUIT:
               pygame.quit()
               sys.exit()
-          pygame.draw.rect(telaganhador, (0, 255, 0), (130, 225, 280, 80))
-          texto = fonte.render("Você Ganhou!", True, (250, 255, 255))
-          telaganhador.blit(texto, (160, 250))
-          cont += 1
-          time.sleep(1)
-          pygame.display.update()
+      pygame.draw.rect(telaganhador, (0, 255, 0), (130, 225, 280, 80))
+      texto = fonte.render("Você Ganhou!", True, (250, 255, 255))
+      telaganhador.blit(texto, (160, 250))
+      cont += 1
+      time.sleep(1)
+      pygame.display.update()
       telaganhador.fill(cor_fundo)
