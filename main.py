@@ -1,5 +1,7 @@
 import pygame
+import sys 
 from pygame.locals import *
+import time
 
 
 pygame.init()
@@ -23,11 +25,89 @@ posicao_texto = ((largura_botao - largura_texto) // 2, (altura_botao - altura_te
 clock = pygame.time.Clock()
 
 def modo_facil():
-    print('Janela aberta')
+    cor_fundo1 = (0,0,0)
+    telafacil = pygame.display.set_mode((400, 400))
+    pygame.display.set_caption('Jogo da Memoria - Nível Fácil')
+    pontos = 50
+    tempo = 300
+    cont = 0
+    #imagemvirada = pygame.image.load('')
+    while tempo > 0 and pontos > 0:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.draw.rect(telafacil, (0, 255, 0), (0, 0, 400, 25))
+        fonte = pygame.font.SysFont('arial', 20, True, True)
+        textoniveis = f'Pontos: {pontos}'
+        textotelafacil = fonte.render(textoniveis, True, (255, 255, 255))
+        telafacil.blit(textotelafacil, (1, 1))
+        #telafacil.blit(imagemvirada, (100, 100))
+        textotempo = fonte.render(f'Tempo: {tempo}', True, (255, 255, 255))
+        telafacil.blit(textotempo, (280, 1))
+        tempo -= 1
+        cont += 1
+        time.sleep(1)
+        if cont == 30:
+            pontos -= 5
+            cont -= 30
+        pygame.display.update()
+        telafacil.fill(cor_fundo1)
 def modo_intermédiario():
-    print('janela média')
+    cor_fundo2 = (0,0,0)
+    telaintermediario = pygame.display.set_mode((600, 600))
+    pygame.display.set_caption('Jogo da Memoria - Nível Intermediário')
+    pontos = 100
+    tempo = 600
+    cont = 0
+    while tempo > 0 and pontos > 0:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.draw.rect(telaintermediario, (220, 220, 0), (0, 0, 600, 25))
+        fonte = pygame.font.SysFont('arial', 20, True, True)
+        textoniveis = f'Pontos: {pontos}'
+        textotelafacil = fonte.render(textoniveis, True, (255, 255, 255))
+        telaintermediario.blit(textotelafacil, (1, 1))
+        textotempo = fonte.render(f'Tempo: {tempo}', True, (255, 255, 255))
+        telaintermediario.blit(textotempo, (485, 1))
+        tempo -= 1
+        cont += 1
+        time.sleep(1)
+        if cont == 30:
+            pontos -= 5
+            cont -= 30
+        cor_fundo = (0, 0, 0)
+        pygame.display.update()
+        telaintermediario.fill(cor_fundo2)
 def modo_dificil():
-    print('janela dificil')
+    teladificil = pygame.display.set_mode((1000, 700))
+    pygame.display.set_caption('Jogo da Memoria - Nível Difícil')
+    pontos = 150
+    tempo = 900
+    cont = 0
+    while tempo > 0 and pontos > 0:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.draw.rect(teladificil, (255, 0, 0), (0, 0, 1000, 25))
+        fonte = pygame.font.SysFont('arial', 20, True, True)
+        textoniveis = f'Pontos: {pontos}'
+        textotelafacil = fonte.render(textoniveis, True, (255, 255, 255))
+        teladificil.blit(textotelafacil, (1, 1))
+        textotempo = fonte.render(f'Tempo: {tempo}', True, (255, 255, 255))
+        teladificil.blit(textotempo, (880, 1))
+        tempo -= 1
+        cont += 1
+        time.sleep(1)
+        if cont == 30:
+            pontos -= 5
+            cont -= 30
+        cor_fundo3 = (0, 0, 0)
+        pygame.display.update()
+        teladificil.fill(cor_fundo3)
 def criar_nova_janela():
     nova_largura = 800
     nova_altura = 600
