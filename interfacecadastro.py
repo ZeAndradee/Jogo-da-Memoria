@@ -56,11 +56,11 @@ def abrir_login():
     textbox.configure(state="normal")
 
     def botao_entrar():
-      usuarioL = textbox.get("0.0", "end").strip()
-      #strip esta servindo aqui para eliminar os possíveis espaços em branco que a string pode ter quando o usuário for colocar 
-      with open("usuarios.txt", "r") as u: 
+      usuarioL = textbox.get("0.0", "end").rstrip()
+      #recebe o input do login usuario
+      with open("usuarios.txt", "r", encoding="utf-8") as u: 
          for line in u:  
-            listaU = line.strip().split('/n')
+            listaU = u.read().splitlines()
             #o split esta aqui para dividir os nomes em linhas 
             
             print(listaU)
@@ -117,7 +117,7 @@ def abrir_cadastro():
     textbox3 = customtkinter.CTkTextbox(cadastro_window, width=250, height=30, border_color= '#3b8ed0', border_width=2)
     textbox3.place(x= 75, y=75)
     textbox3.insert("0.0", "new text to insert") 
-    text3 = textbox3.get("0.0", "end") 
+    
     textbox3.delete("0.0", "end")
     textbox3.configure(state="normal") 
 
@@ -134,25 +134,23 @@ def abrir_cadastro():
     textbox2.configure(state="normal") 
 
     def botao_cadastrar():
+      nickC = textbox3.get("0.0", "end").strip()
       senhal = textbox2.get("0.0", "end").strip()
-      #strip esta servindo aqui para eliminar os possíveis espaços em branco que a string pode ter quando o usuário for colocar 
 
-      with open("usuarios.txt", "r") as u: 
-         
-         for line in u:  
-            listaS = line.strip().split('/n')
-            #o split esta aqui para dividir os nomes em linhas 
-            print(listaS)
-            if senhal in listaS:  
-               print('Senha: ', senhal)
-               print('existe!')
-               u.close()
-               return
-                  
-      print('Senha: ', senhal)
-      print('Não existe')
-      u.close()
-
+      #Verifica se o usuario já existe
+      with open("usuarios.txt", "r") as u:
+        listaU = u.read().splitlines()
+        print(listaU)
+        if nickC in listaU:
+           print('O usuario já existe.')
+        else:
+           print('Usuario Adicionado.')
+           #Adiciona o usuário a lista
+           with open("usuarios.txt", "a+") as c: 
+             listaU = c.write(nickC+'\n')
+             c.close()    
+        u.close()
+          
           
     #botao cadastrar
     button_cadastrar = customtkinter.CTkButton(cadastro_window, text= 'Cadastrar', command= botao_cadastrar)
@@ -163,7 +161,5 @@ def abrir_jogo():
     game_window = customtkinter.CTkToplevel()
     game_window.title("Tela jogo")
     game_window.geometry("400x240")
-
-
-    
+  
 app.mainloop()
