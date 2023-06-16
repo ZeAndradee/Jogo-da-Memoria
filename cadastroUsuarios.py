@@ -40,6 +40,7 @@ def abrir_login():
     login_window.title("Tela de login")
     login_window.geometry("400x240")
 
+
     # Criando uma label com o custom tkinter
     label = customtkinter.CTkLabel(login_window, text="Tela login", font=customtkinter.CTkFont(size=20, weight="bold"))
     label.place(x=150, y=10)
@@ -55,9 +56,13 @@ def abrir_login():
     textbox.delete("0.0", "end") 
     textbox.configure(state="normal")
 
+    #asteristicos na senha
+
+
     def botao_entrar():
       usuarioL = textbox.get("0.0", "end").strip()
       usuarioS = textbox2.get("0.0", "end").strip()
+
 
       #recebe o input do login usuario
       with open("usuarios.txt", "r", encoding="utf-8") as u:   
@@ -105,7 +110,6 @@ def abrir_login():
     textbox2 = customtkinter.CTkTextbox(login_window, width=250, height=30, border_color= '#3b8ed0', border_width=2)
     textbox2.place(x= 75, y=145)
     textbox2.insert("0.0", "new text to insert")
-    text2 = textbox2.get("0.0", "end") 
     textbox2.delete("0.0", "end")
     textbox2.configure(state="normal") 
 
