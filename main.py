@@ -160,10 +160,10 @@ def modo_facil():
     pontos = 50
     tempo = 300
     cont = 0
-    Num_imagens = 6
+    Num_imagens = 12
     posicaoimagens = []
     listaimagensfacil = [imagem1, imagem1, imagem2, imagem2, imagem3, imagem3, imagem4, imagem4, imagem5, imagem5]
-    listaposicoesfacil = [(100, 100), (150, 150), (200, 200), (250, 250), (300, 300), (350, 350)]
+    listaposicoesfacil = [(66,0), (132, 0), (198, 0), (264, 0), (330, 0), (396, 0), (66,200), (132,200), (198,200), (264,200), (330,200), (396,200)]
     posicoesaleatorias = sorted(listaposicoesfacil)
     listaimagensapagada = []
     carta_virada = [False, False, False, False, False, False, False, False, False, False]
